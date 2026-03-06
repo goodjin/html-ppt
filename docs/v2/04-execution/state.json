@@ -1,0 +1,14 @@
+{
+  "projectId": "web-ppt",
+  "version": "v2",
+  "startTime": "2026-03-06T21:40:00Z",
+  "lastUpdateTime": "2026-03-06T21:45:00Z",
+  "status": "in_progress",
+  "currentTask": "T-02",
+  "completedTasks": ["T-01"],
+  "failedTasks": [],
+  "pendingTasks": ["T-02", "T-03", "T-04", "T-05", "T-06", "T-07", "T-08"],
+  "totalTasks": 8,
+  "progress": 12.5,
+  "errors": []
+}
