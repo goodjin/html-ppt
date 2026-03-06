@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal.js 特性展示</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 封面 -->
+            <section data-background-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <h1>Reveal.js 特性展示</h1>
+                <p>网页版PPT开发示例</p>
+                <small>按 → 键继续</small>
+            </section>
+
+            <!-- 特性1: 片段 -->
+            <section>
+                <h2>特性1: 片段显示</h2>
+                <p>内容可以逐段显示</p>
+                <p class="fragment">这段会先出现</p>
+                <p class="fragment">这段后出现</p>
+                <p class="fragment fade-up">这段从上方淡入</p>
+            </section>
+
+            <!-- 特性2: 代码高亮 -->
+            <section>
+                <h2>特性2: 代码高亮</h2>
+                <pre><code class="javascript">
+function hello() {
+    console.log("Hello Reveal.js!");
+}
+                </code></pre>
+            </section>
+
+            <!-- 特性3: 背景 -->
+            <section data-background-color="#1a1a2e">
+                <h2>特性3: 背景颜色</h2>
+                <p>支持自定义背景色</p>
+            </section>
+
+            <!-- 特性4: 背景图片 -->
+            <section data-background-image="https://picsum.photos/1920/1080?random=1" data-background-opacity="0.3">
+                <h2>特性4: 背景图片</h2>
+                <p>支持背景图片（叠加透明度）</p>
+            </section>
+
+            <!-- 特性5: 渐变背景 -->
+            <section data-background-gradient="linear-gradient(45deg, #ff6b6b, #feca57)">
+                <h2>特性5: 渐变背景</h2>
+                <p>支持CSS渐变背景</p>
+            </section>
+
+            <!-- 特性6: 动画 -->
+            <section>
+                <h2>特性6: 内联动画</h2>
+                <span class="fragment roll-in">滚动进入</span>
+                <span class="fragment fade-in-then-out">淡入淡出</span>
+                <span class="fragment fade-in-then-semi-out">半透明</span>
+            </section>
+
+            <!-- 特性7: 链接 -->
+            <section>
+                <h2>特性7: 链接</h2>
+                <p><a href="https://revealjs.com" target="_blank">访问 Reveal.js 官网</a></p>
+            </section>
+
+            <!-- 特性8: 笔记 -->
+            <section>
+                <h2>特性8: 演讲者备注</h2>
+                <p>按 S 键打开演讲者视图</p>
+                <aside class="notes">
+                    这是演讲者备注，只在演讲者视图可见！
+                </aside>
+            </section>
+
+            <!-- 特性9: 表格 -->
+            <section>
+                <h2>特性9: 表格</h2>
+                <table>
+                    <thead>
+                        <tr><th>功能</th><th>支持</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>表格</td><td>✓</td></tr>
+                        <tr><td>代码高亮</td><td>✓</td></tr>
+                        <tr><td>动画</td><td>✓</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 特性10: 引用 -->
+            <section>
+                <h2>特性10: 引用块</h2>
+                <blockquote cite="https://revealjs.com">
+                    "The Reveal.js is awesome!"
+                </blockquote>
+            </section>
+
+            <!-- 特性11: 进度条 -->
+            <section>
+                <h2>特性11: 进度指示</h2>
+                <p>底部显示进度条和页码</p>
+            </section>
+
+            <!-- 特性12: 切换效果 -->
+            <section data-transition="zoom">
+                <h2>特性12: 切换效果</h2>
+                <p>Zoom 缩放效果</p>
+            </section>
+
+            <section data-transition="convex">
+                <h2>切换: Convex</h2>
+            </section>
+
+            <section data-transition="concave">
+                <h2>切换: Concave</h2>
+            </section>
+
+            <section data-transition="fade">
+                <h2>切换: Fade</h2>
+            </section>
+
+            <section data-transition="slide">
+                <h2>切换: Slide</h2>
+            </section>
+
+            <!-- 结束 -->
+            <section data-background-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <h2>谢谢观看</h2>
+                <p>Web PPT 开发示例</p>
+                <small>按 ESC 查看总览</small>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            showSlideNumber: 'all',
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>
