@@ -6,6 +6,7 @@
         <router-link to="/templates">模板</router-link>
         <router-link to="/presentations">演示</router-link>
         <router-link to="/assets">素材</router-link>
+        <router-link to="/theme">主题</router-link>
       </nav>
     </header>
     <main class="app-main">

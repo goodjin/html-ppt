@@ -6,32 +6,38 @@
       </router-link>
       <h2>预览: {{ templateName }}</h2>
       <div class="actions">
+        <button @click="toggleView" class="secondary">{{ viewMode === 'split' ? '全屏预览' : '分屏模式' }}</button>
         <button @click="toggleFullscreen" class="secondary">全屏</button>
       </div>
     </div>
 
-    <SplitView :mode="viewMode">
-      <template #editor>
-        <div class="editor-container">
-          <MarkdownEditor v-model="content" />
-        </div>
-      </template>
-      <template #preview>
-        <div class="preview-container">
-          <SlidePreview :content="content" />
-        </div>
-      </template>
-    </SplitView>
+    <div class="preview-content" :class="{ 'fullscreen-mode': viewMode === 'preview' }">
+      <div v-if="viewMode === 'preview'" class="fullscreen-preview">
+        <RevealPreview :content="content" />
+      </div>
+      <SplitView v-else :mode="viewMode">
+        <template #editor>
+          <div class="editor-container">
+            <MarkdownEditor v-model="content" />
+          </div>
+        </template>
+        <template #preview>
+          <div class="preview-container">
+            <RevealPreview :content="content" />
+          </div>
+        </template>
+      </SplitView>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTemplateStore } from '@/stores/template'
 import SplitView from '@/components/preview/SplitView.vue'
 import MarkdownEditor from '@/components/editor/MarkdownEditor.vue'
-import SlidePreview from '@/components/preview/SlidePreview.vue'
+import RevealPreview from '@/components/preview/RevealPreview.vue'
 
 const route = useRoute()
 const store = useTemplateStore()
@@ -45,6 +51,10 @@ const templateName = computed(() => {
   return template?.name || '未命名'
 })
 
+function toggleView() {
+  viewMode.value = viewMode.value === 'split' ? 'preview' : 'split'
+}
+
 function toggleFullscreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen()
@@ -52,6 +62,14 @@ function toggleFullscreen() {
     document.documentElement.requestFullscreen()
   }
 }
+
+// Watch for content changes and update localStorage
+watch(content, (newContent) => {
+  const template = store.templates.find(t => t.id === templateId)
+  if (template && newContent !== template.content) {
+    store.updateTemplate(templateId, { content: newContent })
+  }
+})
 
 onMounted(async () => {
   await store.loadTemplates()
@@ -74,6 +92,7 @@ onMounted(async () => {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .toolbar h2 {
@@ -86,8 +105,29 @@ onMounted(async () => {
   gap: 0.5rem;
 }
 
+.preview-content {
+  flex: 1;
+  min-height: 0;
+}
+
+.preview-content.fullscreen-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #000;
+}
+
+.fullscreen-preview {
+  width: 100%;
+  height: 100vh;
+}
+
 .editor-container, .preview-container {
   padding: 1rem;
   height: 100%;
+  overflow: auto;
 }
 </style>
