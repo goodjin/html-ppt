@@ -41,6 +41,11 @@ const router = createRouter({
       path: '/theme',
       name: 'ThemeSettings',
       component: () => import('@/views/ThemeView.vue')
+    },
+    {
+      path: '/templates/:id/export',
+      name: 'TemplateExport',
+      component: () => import('@/views/ExportView.vue')
     }
   ]
 })

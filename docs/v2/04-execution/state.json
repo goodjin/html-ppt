@@ -2,13 +2,13 @@
   "projectId": "web-ppt",
   "version": "v2",
   "startTime": "2026-03-06T21:40:00Z",
-  "lastUpdateTime": "2026-03-07T10:15:00Z",
+  "lastUpdateTime": "2026-03-07T10:20:00Z",
   "status": "in_progress",
-  "currentTask": "MOD-04",
-  "completedTasks": ["MOD-01", "MOD-02", "MOD-03"],
+  "currentTask": "MOD-05-06",
+  "completedTasks": ["MOD-01", "MOD-02", "MOD-03", "MOD-04"],
   "failedTasks": [],
-  "pendingTasks": ["MOD-04", "MOD-05", "MOD-06", "Integration"],
+  "pendingTasks": ["MOD-05", "MOD-06", "Integration"],
   "totalModules": 7,
-  "progress": 37.5,
+  "progress": 50,
   "errors": []
 }
