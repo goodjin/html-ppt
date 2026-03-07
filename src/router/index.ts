@@ -36,6 +36,11 @@ const router = createRouter({
       path: '/assets',
       name: 'AssetManagement',
       component: () => import('@/views/AssetView.vue')
+    },
+    {
+      path: '/theme',
+      name: 'ThemeSettings',
+      component: () => import('@/views/ThemeView.vue')
     }
   ]
 })
