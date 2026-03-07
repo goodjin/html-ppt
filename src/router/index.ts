@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import('@/views/TemplateEditView.vue')
     },
     {
+      path: '/templates/:id/preview',
+      name: 'TemplatePreview',
+      component: () => import('@/views/PreviewView.vue')
+    },
+    {
       path: '/presentations',
       name: 'PresentationList',
       component: () => import('@/views/PresentationListView.vue')

@@ -1,4 +1,4 @@
-import type { PresentationTemplate, CreateTemplateDto, UpdateTemplateDto, TemplateCategory } from '@/types/template'
+import { type PresentationTemplate, type CreateTemplateDto, type UpdateTemplateDto, TemplateCategory } from '@/types/template'
 
 const STORAGE_KEY = 'web-ppt-templates'
 
