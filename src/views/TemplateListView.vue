@@ -30,16 +30,22 @@
         :key="template.id"
         class="template-card"
       >
+        <div class="card-preview" @click="previewTemplate(template.id)">
+          <div class="preview-content" v-html="getPreviewHtml(template.content)"></div>
+          <div class="preview-overlay">预览</div>
+        </div>
         <div class="card-content">
           <h3>{{ template.name }}</h3>
           <p>{{ template.description || '暂无描述' }}</p>
           <span class="category-tag">{{ getCategoryLabel(template.category) }}</span>
         </div>
         <div class="card-actions">
-          <router-link :to="`/templates/${template.id}/edit`">
-            <button>编辑</button>
+          <router-link :to="`/templates/${template.id}/preview`">
+            <button>预览</button>
           </router-link>
-          <button class="secondary" @click="duplicate(template.id, template.name)">复制</button>
+          <router-link :to="`/templates/${template.id}/edit`">
+            <button class="secondary">编辑</button>
+          </router-link>
           <button class="danger" @click="remove(template.id)">删除</button>
         </div>
       </div>
@@ -55,11 +61,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useTemplateStore } from '@/stores/template'
 import { storeToRefs } from 'pinia'
 import { TemplateCategory, CategoryLabels } from '@/types/template'
+import { renderMarkdown } from '@/utils/markdown'
 
+const router = useRouter()
 const store = useTemplateStore()
 const { templates, selectedCategory } = storeToRefs(store)
 
@@ -76,8 +85,16 @@ function getCategoryLabel(category: TemplateCategory) {
   return CategoryLabels[category]
 }
 
-async function duplicate(id: string, name: string) {
-  await store.duplicateTemplate(id, `${name} (副本)`)
+function getPreviewHtml(content: string): string {
+  // Extract first slide content
+  const slides = content.split(/^---$/m)
+  const firstSlide = slides[1] || slides[0] || ''
+  // Simple render for preview
+  return renderMarkdown(firstSlide).replace(/<h1>/g, '<h4>').replace(/<\/h1>/g, '</h4>')
+}
+
+function previewTemplate(id: string) {
+  router.push(`/templates/${id}/preview`)
 }
 
 async function remove(id: string) {
@@ -135,8 +152,60 @@ onMounted(() => {
 .template-card {
   background: #fff;
   border-radius: 8px;
-  padding: 1.5rem;
+  overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-preview {
+  position: relative;
+  height: 140px;
+  background: #1a1a1a;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.preview-content {
+  padding: 0.75rem;
+  color: #fff;
+  font-size: 0.6rem;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+.preview-content :deep(h4) {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  color: #4a90d9;
+}
+
+.preview-content :deep(p) {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.55rem;
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card-preview:hover .preview-overlay {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 1rem 1.5rem;
 }
 
 .card-content h3 {
@@ -162,14 +231,17 @@ onMounted(() => {
 .card-actions {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
+  padding: 0.75rem 1.5rem 1rem;
 }
 
 .card-actions button {
   flex: 1;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.card-actions a {
+  flex: 1;
 }
 
 .empty {
