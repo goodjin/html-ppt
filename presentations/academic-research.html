@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术报告 - Research Presentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css" id="theme">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #27ae60;
+            --accent: #3498db;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        .reveal { background: var(--light); }
+        .reveal h1, .reveal h2, .reveal h3 { color: var(--dark); }
+        .notebook {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+        }
+        .notebook::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff6b6b;
+        }
+        .stat-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--primary);
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 封面 -->
+            <section style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 20px;">🎓</div>
+                <h1 style="color: var(--secondary);">人工智能在医疗诊断中的应用研究</h1>
+                <h3 style="color: #666;">Artificial Intelligence in Medical Diagnosis</h3>
+                <div style="margin-top: 40px; color: #888;">
+                    <p>答辩人：张三</p>
+                    <p>指导教师：李教授</p>
+                    <p>学院：计算机科学与技术学院</p>
+                    <p>日期：2026年3月</p>
+                </div>
+            </section>
+
+            <!-- 目录 -->
+            <section>
+                <h2>目录 Outline</h2>
+                <div class="notebook">
+                    <ol style="line-height: 2;">
+                        <li>研究背景与意义</li>
+                        <li>国内外研究现状</li>
+                        <li>研究目标与内容</li>
+                        <li>研究方法与技术路线</li>
+                        <li>实验设计与结果分析</li>
+                        <li>创新点与贡献</li>
+                        <li>总结与展望</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 研究背景 -->
+            <section>
+                <h2>01 研究背景</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div>
+                        <h3>行业痛点</h3>
+                        <ul style="font-size: 18px;">
+                            <li>医疗资源分布不均</li>
+                            <li>误诊率居高不下</li>
+                            <li>医生工作负荷大</li>
+                            <li>诊断效率有待提升</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>AI 优势</h3>
+                        <ul style="font-size: 18px;">
+                            <li>24/7 不间断工作</li>
+                            <li>标准化诊断</li>
+                            <li>大规模数据处理</li>
+                            <li>辅助决策支持</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 研究意义 -->
+            <section>
+                <h2>02 研究意义</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="stat-item">
+                        <div style="font-size: 36px; color: var(--accent);">🏥</div>
+                        <h4>理论意义</h4>
+                        <p style="font-size: 14px; color: #666;">推动医学影像分析与深度学习技术的结合</p>
+                    </div>
+                    <div class="stat-item">
+                        <div style="font-size: 36px; color: var(--primary);">💡</div>
+                        <h4>实践意义</h4>
+                        <p style="font-size: 14px; color: #666;">提高基层医疗机构诊断水平</p>
+                    </div>
+                    <div class="stat-item">
+                        <div style="font-size: 36px; color: var(--secondary);">🌍</div>
+                        <h4>社会价值</h4>
+                        <p style="font-size: 14px; color: #666;">缓解看病难问题，促进医疗公平</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 研究现状 -->
+            <section>
+                <h2>03 国内外研究现状</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>2017 - AlphaGo</strong>
+                        <p style="font-size: 14px; color: #666;">深度学习在医疗领域的初步探索</p>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2019 - JAMA 发表</strong>
+                        <p style="font-size: 14px; color: #666;">AI 诊断皮肤癌准确率超过皮肤科医生</p>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2022 - Transformer</strong>
+                        <p style="font-size: 14px; color: #666;">Vision Transformer 在医学影像中的应用</p>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2025 - 多模态融合</strong>
+                        <p style="font-size: 14px; color: #666;">AI + 临床数据综合诊断成为主流方向</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 研究目标 -->
+            <section>
+                <h2>04 研究目标</h2>
+                <div class="notebook">
+                    <h3 style="color: var(--primary);">总体目标</h3>
+                    <p>构建一个基于深度学习的多模态医学影像辅助诊断系统</p>
+                    <h3 style="color: var(--accent); margin-top: 30px;">具体目标</h3>
+                    <ul>
+                        <li>设计高效的特征提取网络</li>
+                        <li>实现多模态数据融合</li>
+                        <li>开发可解释的诊断模型</li>
+                        <li>构建临床辅助诊断原型</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 技术路线 -->
+            <section>
+                <h2>05 技术路线</h2>
+                <div style="background: white; padding: 30px; border-radius: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div style="background: var(--accent); color: white; padding: 15px 30px; border-radius: 8px;">数据采集</div>
+                        <div style="font-size: 24px;">→</div>
+                        <div style="background: var(--primary); color: white; padding: 15px 30px; border-radius: 8px;">预处理</div>
+                        <div style="font-size: 24px;">→</div>
+                        <div style="background: var(--secondary); color: white; padding: 15px 30px; border-radius: 8px;">模型训练</div>
+                        <div style="font-size: 24px;">→</div>
+                        <div style="background: var(--dark); color: white; padding: 15px 30px; border-radius: 8px;">结果输出</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 方法论 -->
+            <section>
+                <h2>06 研究方法</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                    <div class="stat-item">
+                        <h4>文献研究法</h4>
+                        <p style="font-size: 14px;">梳理150+篇相关论文</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>实验研究法</h4>
+                        <p style="font-size: 14px;">在公开数据集上验证</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>案例分析法</h4>
+                        <p style="font-size: 14px;">结合临床案例测试</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>对比分析法</h4>
+                        <p style="font-size: 14px;">与现有方法比较</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 实验设计 -->
+            <section>
+                <h2>07 实验设计</h2>
+                <h3>数据集</h3>
+                <table style="font-size: 14px;">
+                    <tr><th>数据集</th><th>样本数</th><th>类别</th><th>来源</th></tr>
+                    <tr><td>ChestX-ray14</td><td>112,120</td><td>14种疾病</td><td>NIH</td></tr>
+                    <tr><td>ISIC</td><td>33,000</td><td>皮肤病变</td><td>国际皮肤影像联盟</td></tr>
+                    <tr><td>Diabetic Retinopathy</td><td>88,000</td><td>5级病变</td><td>Kaggle</td></tr>
+                </table>
+            </section>
+
+            <!-- 实验结果 -->
+            <section>
+                <h2>08 实验结果</h2>
+                <h3>性能对比</h3>
+                <table style="font-size: 16px;">
+                    <tr><th>方法</th><th>准确率</th><th>召回率</th><th>F1-Score</th></tr>
+                    <tr><td>ResNet-50</td><td>89.2%</td><td>87.5%</td><td>88.3%</td></tr>
+                    <tr><td>EfficientNet</td><td>91.5%</td><td>90.1%</td><td>90.8%</td></tr>
+                    <tr><td>ViT-Base</td><td>92.3%</td><td>91.0%</td><td>91.6%</td></tr>
+                    <tr style="background: #d5f5e3;"><td><strong>本文方法</strong></td><td><strong>94.8%</strong></td><td><strong>93.5%</strong></td><td><strong>94.1%</strong></td></tr>
+                </table>
+            </section>
+
+            <!-- 结果可视化 -->
+            <section>
+                <h2>09 结果可视化</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="height: 150px; background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%); border-radius: 8px; display: flex; align-items: flex-end; justify-content: center;">
+                        <div style="background: white; width: 80%; height: 40%; border-radius: 4px 4px 0 0;"></div>
+                    </div>
+                    <div style="height: 150px; background: linear-gradient(180deg, #3498db 0%, #2980b9 100%); border-radius: 8px; display: flex; align-items: flex-end; justify-content: center;">
+                        <div style="background: white; width: 80%; height: 65%; border-radius: 4px 4px 0 0;"></div>
+                    </div>
+                    <div style="height: 150px; background: linear-gradient(180deg, #9b59b6 0%, #8e44ad 100%); border-radius: 8px; display: flex; align-items: flex-end; justify-content: center;">
+                        <div style="background: white; width: 80%; height: 85%; border-radius: 4px 4px 0 0;"></div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: #666; margin-top: 10px;">各类别诊断准确率对比</p>
+            </section>
+
+            <!-- 消融实验 -->
+            <section>
+                <h2>10 消融实验</h2>
+                <h3>各模块贡献度</h3>
+                <table style="font-size: 16px;">
+                    <tr><th>配置</th><th>准确率</th><th>提升</th></tr>
+                    <tr><td>Baseline (ResNet-50)</td><td>89.2%</td><td>—</tr>
+                    <tr><td>+ 注意力机制</td><td>91.5%</td><td>+2.3%</td></tr>
+                    <tr><td>+ 多模态融合</td><td>93.2%</td><td>+4.0%</td></tr>
+                    <tr style="background: #d5f5e3;"><td><strong>+ 知识蒸馏</strong></td><td><strong>94.8%</strong></td><td><strong>+5.6%</strong></td></tr>
+                </table>
+            </section>
+
+            <!-- 创新点 -->
+            <section>
+                <h2>11 创新点</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="background: white; padding: 25px; border-radius: 12px; border-left: 4px solid var(--primary);">
+                        <h4>🎯 创新一</h4>
+                        <p style="font-size: 14px; color: #666;">提出基于注意力机制的多尺度特征提取网络</p>
+                    </div>
+                    <div style="background: white; padding: 25px; border-radius: 12px; border-left: 4px solid var(--accent);">
+                        <h4>🎯 创新二</h4>
+                        <p style="font-size: 14px; color: #666;">设计跨模态特征融合模块</p>
+                    </div>
+                    <div style="background: white; padding: 25px; border-radius: 12px; border-left: 4px solid var(--secondary);">
+                        <h4>🎯 创新三</h4>
+                        <p style="font-size: 14px; color: #666;">构建可解释的诊断可视化方法</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 讨论 -->
+            <section>
+                <h2>12 讨论</h2>
+                <h3>局限性</h3>
+                <ul>
+                    <li>数据来源有限，可能存在选择偏差</li>
+                    <li>部分罕见病样本不足</li>
+                    <li>临床验证需要更长时间</li>
+                </ul>
+                <h3 style="margin-top: 20px;">改进方向</h3>
+                <ul>
+                    <li>引入更多医疗机构数据</li>
+                    <li>结合更多生物标志物</li>
+                    <li>开展前瞻性临床研究</li>
+                </ul>
+            </section>
+
+            <!-- 总结 -->
+            <section>
+                <h2>13 总结与展望</h2>
+                <div class="notebook">
+                    <h3>工作总结</h3>
+                    <ul>
+                        <li>完成文献综述与需求分析</li>
+                        <li>提出创新的辅助诊断方法</li>
+                        <li>在公开数据集上取得先进性能</li>
+                        <li>构建原型系统并进行验证</li>
+                    </ul>
+                    <h3 style="margin-top: 20px;">未来工作</h3>
+                    <ul>
+                        <li>扩大临床验证范围</li>
+                        <li>优化模型部署效率</li>
+                        <li>探索更多疾病类型</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 致谢 -->
+            <section style="text-align: center;">
+                <h1>感谢聆听</h1>
+                <p style="color: #666; margin-top: 20px;">Thank You for Your Attention</p>
+                <div style="margin-top: 40px; color: #888;">
+                    <p>📧 zhangsan@email.edu.cn</p>
+                    <p>🔬 指导教师：李教授</p>
+                </div>
+                <div style="margin-top: 40px; font-size: 60px;">🏆</div>
+            </section>
+
+            <!-- Q&A -->
+            <section style="text-align: center;">
+                <h1>Q & A</h1>
+                <p style="color: #666;">欢迎提问</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            progress: true,
+            center: true,
+            transition: 'slide',
+            plugins: [ ]
+        });
+    </script>
+</body>
+</html>
